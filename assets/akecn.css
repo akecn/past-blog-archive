@@ -1,0 +1,27 @@
+.layout {
+    width: 960px;
+    margin: 0 auto;
+}
+
+header {
+    margin-top: 10px;
+}
+
+nav {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 90px;
+}
+#container {
+    display:-webkit-box;
+    display: box;
+}
+article {
+    -webkit-box-flex:1;
+    box-flex: 1;
+}
+aside {
+    width: 190px;
+    margin-left: 10px;
+}
