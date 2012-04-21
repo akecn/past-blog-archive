@@ -1,8 +1,20 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>{{page.title}}</title>
+        <script type="text/javascript" src="prettify.js"></script>
+        <link rel="stylesheet" href="prettify.css">
+        <link rel="stylesheet" href="akecn.css">
     </head>
     <body>
-        {{content}}
+        <header class="layout">
+            <h1><a href="{{site.url}}">Akecn</a></h1>
+        </header>
+        <section id="container" class="layout">
+            {{content}}
+        </section>
+        <footer class="layout">
+            &copy;2012 copyright by ake
+        </footer>
     </body>
 </html>
