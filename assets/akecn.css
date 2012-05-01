@@ -1,10 +1,14 @@
 .layout {
-    width: 960px;
     margin: 0 auto;
 }
 
 header {
-    margin-top: 10px;
+}
+
+footer {
+    border-top: 1px solid #aaa;
+    text-align: center;
+    padding-top: 10px;
 }
 
 nav {
@@ -16,6 +20,7 @@ nav {
 #container {
     display:-webkit-box;
     display: box;
+    margin: 10px auto;
 }
 article {
     -webkit-box-flex:1;
