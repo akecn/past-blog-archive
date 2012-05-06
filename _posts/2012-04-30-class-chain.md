@@ -68,4 +68,4 @@ var f = function() { return arguments.callee; };
 update on 05-06:
 [demo] is here. with the source code.
 
-[demo]: http://akecn.github.com/lab/as-ext/base.test.htm
+[demo]: http://akecn.github.com/lab/ext-simulation/base.test.htm
