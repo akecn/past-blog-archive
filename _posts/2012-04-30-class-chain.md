@@ -54,7 +54,7 @@ console.log(
 也许是因为`caller`并不是规范的一部分，所以在strict模式下，在调用caller的时候会抛出错误。但由于目前所有的主流浏览器实际都支持了这个属性，所以实际上还是能看到一些颇有意思的应用方式。比如ExtJS类的关系链的实现就使用了这两个属性，callParent/callOverride等等方法都是利用`Function.caller`来实现的。
 而`callee`则在最新的规范中被废弃，建议使用命名的函数表达式来替代`arguments.callee`的实现，同样的在strict模式下也是不支持的。
 
-<pre>
+<pre class="prettyprint">
 var f = function t() {return t;}
 // instead of 
 var f = function() { return arguments.callee; }; 
@@ -63,3 +63,9 @@ var f = function() { return arguments.callee; };
 说会到ExtJS的类关键链的构造。打算自己简单的模仿一下，加上后续阅读component.js的时候也集成进来。
 对我来说，看代码写出点了不起的东西似乎可能性很低，那干脆就把自己理解的加上自己的想法简单的实现一下是是吧。
 敬请期待，哈哈。
+
+======
+update on 05-06:
+[demo] is here. with the source code.
+
+[demo]: http://akecn.github.com/lab/as-ext/base.test.htm

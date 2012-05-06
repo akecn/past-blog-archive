@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>own component base test</title>
+        <script type="text/javascript" src="base.source.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+console.open();
+        Ext.define('ake.test', {
+            init: function() {
+                console.log(this);
+        //        console.log(this.init.$name, this.init.$owner.$className);
+                console.log(this.superclass)
+                console.log(this.superclass.$class, this.superclass.$className)
+            },
+            shout: function() {
+                console.log('the class name is', this.$className);
+            }
+        });
+
+        Ext.define('ake.tt', {
+            extend: 'ake.test',
+            init: function() {
+                this.callParent();
+                console.log(this.superclass.$class, this.superclass.$className)
+                console.log(this.superclass.superclass.$class, this.superclass.superclass.$className)
+            },
+            shout: function() {
+                console.log('silent');
+            }
+        });
+        ake.test.mao = 1111;
+        var o = new ake.tt();
+        o.init();
+        o.shout();
+        console.log(o.mao);
+        var t = new ake.test();
+        t.shout();
+        </script>
+    </body>
+</html>
