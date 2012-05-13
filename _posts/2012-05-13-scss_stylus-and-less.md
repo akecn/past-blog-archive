@@ -52,7 +52,7 @@ vendor(prop, args)
 LESS与SCSS/stylus不同的是，它允许你在开发时不去关心编译的问题（支持js动态编译、支持NodeJS）。相比SCSS/stylus，它在继承规则上有些弱([这篇文章][2]的Inheritance部分)。
 
 <pre class="prettyprint linenums">
-// SCSS & stylus
+// SCSS &amp; stylus
 .block {
   margin: 10px 5px;
   padding: 2px;
@@ -70,7 +70,7 @@ ul, ol {
 </pre>
 
 <pre class="prettyprint linenums">
-// Compiled CSS (Sass & Stylus)
+// Compiled CSS (Sass &amp; Stylus)
 .block, p, ul, ol {
   margin: 10px 5px;
   padding: 2px;
