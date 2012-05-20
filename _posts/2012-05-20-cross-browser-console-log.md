@@ -11,11 +11,9 @@ function print(data) {
 	console.log(typeof data, data);
 }
 print([]);
-
 // firebug
 object []
 object ["test"]
-
 // chrome
 object ["test"]
 object ["test"]
