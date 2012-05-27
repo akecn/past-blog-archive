@@ -1,0 +1,296 @@
+本章主要是介绍Bootstrap默认定义的基础样式定义，利用这些基础的定义相互组合，完成页面的整体风格定义甚至是更具体的效果。
+
+Bootstrap应该是一个基础工具，它的好处在于已经帮你定义了一个基础的样式风格，对一个网站来说，风格统一的页面们是相当重要的（除非你的站点已经复杂到需要做一些定制化的页面）；还解决了主流浏览器兼容问题。但对于国内的使用者来说，存在一个比较严重的问题——并不支持IE6。
+
+就我个人的认知来看，在使用的时候，我们总是需要根据自己的需求对Bootstrap框架做一些调整，比如兼容ie6，比如更换部分组件的风格，比如增加图标或去除不需要的图标，比如增加一些组件样式支持等等等等。
+
+本章内容包含：基础排版样式，代码块样式，表单样式，按钮样式和由<a href="http://glyphicons.com/">Glyphicons</a>提供的图标。本章的所有示例，包括翻译都在<a title="Bootstrap Base CSS examples" href="http://akecn.github.com/docs/bootstrap/base-css.html" target="_blank">示例页面</a>中。
+<h1>基础排版样式<small>标题，段落，列表和其他</small></h1>
+Bootstrap的排版体系基于两个在variables.less文件中定义的变量：<code>@baseFontSize</code> 和 <code>@baseLineHeight</code>。其含义正如其变量名一样，第一个变量是字体大小的基础值，而第二个变量是行高的基础值。
+
+通过对两个基础值的计算来创建如外边距、内补白、行高等值。
+<h2>强调，地址和缩写</h2>
+<table>
+<thead>
+<tr>
+<th>元素标签</th>
+<th>用法</th>
+<th>可选项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;strong&gt;</code></td>
+<td>用来强调文本中<strong>重要（important）</strong>的片段</td>
+<td>无</td>
+</tr>
+<tr>
+<td><code>&lt;em&gt;</code></td>
+<td>用来强调文本片段的<em>重要性（stress）</em></td>
+<td>无</td>
+</tr>
+<tr>
+<td><code>&lt;abbr&gt;</code></td>
+<td>用来包裹缩略语和首字母缩写，在鼠标悬浮时显示完整的词句</td>
+<td>有<code>title</code>属性用来显示完整的词句
+
+使用样式名<code>.initialism</code>将标签内的字母显示为大写。</td>
+</tr>
+<tr>
+<td><code>&lt;address&gt;</code></td>
+<td>用来显示联系信息 （For contact information for its nearest ancestor or the entire body of work）</td>
+<td>需要在每一行内容末尾添加<code>&lt;br&gt;</code>以保证显示样式是正确的。</td>
+</tr>
+</tbody>
+</table>
+&lt;strong&gt;和&lt;em&gt;标签，都是用来表示强调的，但是具体的差别在哪里呢？可以参考一下这篇文章——《<a title="em和strong的区别" href="http://www.blueidea.com/tech/web/2008/6342.asp" target="_blank">em和strong的区别</a>》。
+
+&lt;address&gt;标签实际表示的不仅仅是地址信息这么简单，而是联系信息的概念。在HTML5中，根据它的位置有不同的含义。具体可以参考<a title="HTML5 &lt;address&gt; Tag" href="http://www.w3schools.com/html5/tag_address.asp" target="_blank">W3CSchools</a>的介绍。
+
+缩略语标签&lt;abbr&gt;的title属性用来定义该缩略语的完整定义，在显示上会有一条虚线底边，且悬浮时鼠标样式为问号。
+<h2>blockquote标签</h2>
+<table>
+<thead>
+<tr>
+<th>元素标签</th>
+<th>用法</th>
+<th>可选项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;blockquote&gt;</code></td>
+<td>用来显示从其他地方引入的内容的块级元素标签</td>
+<td>增加<code>cite</code>属性来标识引用来源的URL地址
+
+使用样式名<code>.pull-left</code>和<code>.pull-right</code>来设置浮动选项。</td>
+</tr>
+<tr>
+<td><code>&lt;small&gt;</code></td>
+<td>可选的元素标签，用以显示一些面向用户的引用信息，典型的用法是用来标识引用内容的标题和作者名。</td>
+<td>用<code><code></code>标签来标识标题或者名称。</code></td>
+</tr>
+</tbody>
+</table>
+<h2>关于列表的样式</h2>
+Bootstrap默认定义了几种样式，包括无序列表，无默认样式的列表，有序列表，定义列表(definition list)。
+具体展示样式，请看示例。
+<h2>代码片段</h2>
+内联的代码片段使用&lt;code&gt;标签，而代码块的展示则使用&lt;pre&gt;标签。一定要注意将尖括号（&lt;&gt;）转义为实体符号以保证能正确的展现代码。可以添加样式名<code>.pre-scrollable</code>，来限制代码块展示的最大高度。
+
+使用Google Prettify来美化和高亮显示代码。只需要设置样式名<code>prettyprint</code> 和 <code>linenums</code>即可。具体可以<a href="http://code.google.com/p/google-code-prettify/">下载google-code-prettify</a>源码，查看<a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">说明文档</a>。
+<h1>表格</h1>
+<h2>表格相关标签说明</h2>
+<div>
+<table><colgroup></colgroup>
+<thead>
+<tr>
+<th>标签名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;table&gt;</code></td>
+<td>用表格的形式来显示数据的容器标签。</td>
+</tr>
+<tr>
+<td><code>&lt;thead&gt;</code></td>
+<td>用来包裹多列表格的表头(<code>&lt;tr&gt;</code>)的容器标签</td>
+</tr>
+<tr>
+<td><code>&lt;tbody&gt;</code></td>
+<td>用来包裹多列表格的表格行(<code>&lt;tr&gt;</code>)的容器标签</td>
+</tr>
+<tr>
+<td><code>&lt;tr&gt;</code></td>
+<td>用来包裹单元格(<code>&lt;td&gt;</code>或<code>&lt;th&gt;</code>)集合的表格行。</td>
+</tr>
+<tr>
+<td><code>&lt;td&gt;</code></td>
+<td>用来定义单元格</td>
+</tr>
+<tr>
+<td><code>&lt;th&gt;</code></td>
+<td>用来标注列（或行，依赖于上下文和摆放的位置）中的特殊的单元格。
+必须放在<code>&lt;thead&gt;</code>标签中。</td>
+</tr>
+<tr>
+<td><code>&lt;caption&gt;</code></td>
+<td>用来描述和概括表格的作用，尤其适合在屏幕阅读器。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2>表格样式选项</h2>
+<table>
+<thead>
+<tr>
+<th>选项名称</th>
+<th>样式名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>默认</td>
+<td>无</td>
+<td>没有样式</td>
+</tr>
+<tr>
+<td>基本样式</td>
+<td><code>.table</code></td>
+<td>只有单元行之间的分割线</td>
+</tr>
+<tr>
+<td>边框</td>
+<td><code>.table-bordered</code></td>
+<td>表格外边框和圆角</td>
+</tr>
+<tr>
+<td>斑马线</td>
+<td><code>.table-striped</code></td>
+<td>在奇数行(1, 3, 5 等等)添加浅灰色背景色</td>
+</tr>
+<tr>
+<td>紧凑表格</td>
+<td><code>.table-condensed</code></td>
+<td>所有单元格<code>td</code> and <code>th</code>元素内补白减半，从8像素减少到4像素</td>
+</tr>
+</tbody>
+</table>
+默认会对表格增加一些基本的样式，比如基本的边框样式等以保证表格的可读性。如果需要更多的样式，则需要增加<code>.table</code>样式名。
+
+通过样式名<code>.table-striped</code>可以添加斑马线效果，但需要注意的是，由于斑马线效果使用的是<code>:nth-child</code>来实现的，所以IE7-IE8是不支持的（当然也包括IE6）。
+
+通过样式名<code>.table-bordered</code>样式名来定义表格的圆角和边框效果。通过样式名<code>.table-condensed</code>的设置，可以使表格看起来更加的紧凑，它实际是通过将单元格的内补白减半（padding由8像素减小到4像素）的方式来实现的。
+
+通过这些表格样式选项的组合，可以展现出你需要的不同的效果。
+<h1>表单</h1>
+Bootstrap中表单部分的设计，不仅针对具体的表单域做了样式的定义，还提供了一些布局类型来展示表单集合。共有4种表单布局类型：
+<ul>
+	<li>垂直对齐 （默认）</li>
+	<li>搜索类型</li>
+	<li>内联</li>
+	<li>水平对齐</li>
+</ul>
+不同类型的表单布局更换需要对结构做一些调整，但是表单控件本身不需要做任何的修改。
+
+Bootstrap的表单定义包含了所有基础的表单控件的样式定义，还增加了一些自定义的组件样式定义，如输入框的前置/后置文本以及复选框列表。每个表单控件还会有如错误，警告，成功以及不可用等状态的显示。
+<h2>4种表单布局类型</h2>
+Bootstrap提供了简单的结构和设计来显示常见的web表单。
+<table>
+<thead>
+<tr>
+<th>类型名称</th>
+<th>样式名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>垂直对齐 （默认）</th>
+<td><code>.form-vertical</code> （不是必须的）</td>
+<td>分层的，做对齐的表单控件</td>
+</tr>
+<tr>
+<th>内联</th>
+<td><code>.form-inline</code></td>
+<td>向左对齐并在同一行内显示完成的表单</td>
+</tr>
+<tr>
+<th>搜索类型</th>
+<td><code>.form-search</code></td>
+<td>为搜索框附加典型的圆角效果</td>
+</tr>
+<tr>
+<th>水平对齐</th>
+<td><code>.form-horizontal</code></td>
+<td>每行向左浮动，标签文本向右对齐</td>
+</tr>
+</tbody>
+</table>
+Bootstrap的表单样式设计相对较简洁，实现的效果通常都不需要增加额外的标签。
+
+默认的表单布局是垂直方向对齐的，通过对表单<code>&amp;lt;form&amp;gt;</code>设置对应的样式名来定义表单的布局类型。如，设置样式名为<code>.form-inline</code>，则表单布局类型切换到内联布局，则所有的表单控件的显示模式变为<code>display:inline-block</code>，正如你了解的，它们会在同一行内显示。而搜索类型的布局，主要提供了圆角的样式。
+
+所谓水平对齐类型可能是我们最常见的表单布局类型样式——左边是标签文案用<code>&amp;lt;label&amp;gt;</code>来表示表单的含义；右边是表单控件。具体使用方法和效果可以参考示例文件。/
+
+关于表单控件的状态，Bootstrap支持表单控件的聚焦和不可用状态展示，默认去除了webkit浏览器默认的<code>outline</code>效果，并增加了盒阴影<code>box-shadow</code>来代替原有的聚焦效果。
+<h2>表单扩展控件</h2>
+<h3>前置 &amp; 后置的输入框</h3>
+表单组—带有前置或后置文本—为你的输入框提供了一种简便的方式来更好的传达用意。如下例子中Twitter用 @ 符号来标识用户名，还有用 $ 标识资产。
+<h3>复选框和单选框</h3>
+升级到1.4版本以后，Bootstrap需要用额外的标签包裹复选款和单选框来将它们组合起来。而现在，之需要简单的用<code>&lt;label&gt;</code>标签来包裹<code>&lt;input type="checkbox"&gt;</code>就可以了。
+
+同行显示的复选框和单选框也是被支持的。只需要给<code>.checkbox</code>或<code>.radio</code>标签增加样式名<code>.inline</code>就行了。
+<h4>Inline forms and append/prepend</h4>
+在同一行内显示前置或后置文本输入框，需要确保<code>.add-on</code>的元素和<code>input</code>元素放在同一行，并且它们之间不能有空格。
+<h4>表单帮助信息</h4>
+添加帮助信息到<code>&lt;span&gt;</code>标签中来显示内联的提示信息。也可以在输入框元素后面使用<code>&lt;p&gt;</code>来显示块级提示信息。
+<h1>按钮</h1>
+<table>
+<thead>
+<tr>
+<th>按钮</th>
+<th>样式名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><button>默认</button></td>
+<td><code>btn</code></td>
+<td>标准的带渐变的灰色按钮效果</td>
+</tr>
+<tr>
+<td><button>主按钮</button></td>
+<td><code>btn btn-primary</code></td>
+<td>给默认的按钮增加额外的视觉效果，用来表示一些主要的行为。</td>
+</tr>
+<tr>
+<td><button>信息</button></td>
+<td><code>btn btn-info</code></td>
+<td>用来取代默认的样式</td>
+</tr>
+<tr>
+<td><button>成功</button></td>
+<td><code>btn btn-success</code></td>
+<td>表明一个成功的行为</td>
+</tr>
+<tr>
+<td><button>警告</button></td>
+<td><code>btn btn-warning</code></td>
+<td>表明应当要谨慎执行该操作</td>
+</tr>
+<tr>
+<td><button>危险</button></td>
+<td><code>btn btn-danger</code></td>
+<td>表明是一个有风险的操作</td>
+</tr>
+<tr>
+<td><button>无语意</button></td>
+<td><code>btn btn-inverse</code></td>
+<td>可选的按钮样式，没有明显的语意。
+Alternate dark gray button, not tied to a semantic action or use</td>
+</tr>
+</tbody>
+</table>
+<h3>为行为创建按钮</h3>
+作为约定，按钮标签（button）应当只用于动作，而超链接则用于对象的描述。举个例子，“下载”应该是一个按钮（button）而“最近的活动”则应该是一个链接。
+
+凡是使用<code>.btn</code>样式名的元素都会有按钮的样式。但是应当只使用<code>&lt;a&gt;</code>和<code>&lt;button&gt;</code>元素来作为按钮显示。
+<h3>跨浏览器兼容</h3>
+关于跨浏览器的兼容，很显然IE又拖后腿了——IE9对背景渐变支持不够良好，所以Bootstrap移除了对它的支持。
+<h3>不同尺寸的按钮</h3>
+通过额外添加样式名<code>.btn-large</code>, <code>.btn-small</code>，或<code>.btn-mini</code>来显示为不同的尺寸。
+<h3>不可用状态（disabled）</h3>
+对于不可用的按钮，通过添加样式名<code>.disabled</code>并给按钮<code>&lt;button&gt;</code>添加<code>disabled</code>属性来表现。
+<h3>同一个样式名，不同的标签</h3>
+事实上，通过添加<code>.btn</code>样式名就可以渲染出按钮的样式。按钮的标签可以是<code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>或 <code>&lt;input&gt;</code>标签。但是你最好还是根据实际的上下文场景来选择标签。
+<h1>图标 <small>由<a href="http://glyphicons.com/" target="_blank">Glyphicons</a>提供</small></h1>
+关于sprite技术这边就不再多说了，如果有不了解的朋友可以google一下。Bootstrap的图标就使用了sprite的方式。
+
+一个Bootstrap的图标使用<code>&lt;i&gt;</code>标签作为所有图标的显示容器，通过添加约定的样式名来显示对应的图标。共有120个图标供大家使用，你可以在<a title="Bootstrap base css docs" href="http://twitter.github.com/bootstrap/base-css.html" target="_blank">原文档</a>，示例页面或者在<strong>sprites.less</strong>文件中找到完整的样式列表。
+
+以上就是本章节的内容，更具体的信息可以在<a title="Twitter Bootstrap" href="http://twitter.github.com/bootstrap/" target="_blank">Bootstrap官方文档</a>中查看。Bootstrap对于不了解CSS或者烦恼于跨浏览样式定义以及希望快速使用敏捷开发的朋友是大有裨益，但是在使用时还是建议根据自己的需要进行选择。
