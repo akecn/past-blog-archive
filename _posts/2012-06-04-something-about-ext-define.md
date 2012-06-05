@@ -45,7 +45,7 @@ ClassManager.create方法则是创建一个类的重点。
 
 <pre class="prettyprint">
 Ext.Class = Class = function(newClass, classData, onClassCreated) {
-    /* blah blah code*/
+    // blah blah code
 
     var preprocessorStack = classData.preprocessors || Class.getDefaultPreprocessors(),
         registeredPreprocessors = Class.getPreprocessors(),
@@ -53,7 +53,7 @@ Ext.Class = Class = function(newClass, classData, onClassCreated) {
         preprocessors = [],
         preprocessor, staticPropertyName, process, i, j, ln;
 
-    /* blah blah code*/
+    // blah blah code
 
     delete classData.preprocessors;
 
