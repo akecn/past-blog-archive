@@ -56,9 +56,9 @@ Ext.Class = Class = function(newClass, classData, onClassCreated) {
     // blah blah code
 
     delete classData.preprocessors;
-
-    for (j = 0, ln = preprocessorStack.length; j < ln; j++) {
-        preprocessor = preprocessorStack[j];
+    // 实现上，Ext并不是这样循环的，而是中规中矩的循环方式。但是不知道为什么，在github上渲染总是有问题
+    // 改成现在的形式以后，代码渲染正常，故暂时先这样吧
+    for (j = 0; (preprocessor = preprocessorStack[j++]);) {
 
         if (typeof preprocessor == 'string') {
             preprocessor = registeredPreprocessors[preprocessor];
