@@ -5,7 +5,7 @@ category: extjs
 ---
 首先我们看一下Ext定义组件，定义类的基本方式：
 
-<pre class="prettyprint numline">
+<pre class="prettyprint">
     Ext.define("AClass", {
         constructor: function() {
             
