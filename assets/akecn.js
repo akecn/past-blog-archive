@@ -1,7 +1,7 @@
 (function($) {
     function handleCodeTag() {
         $('pre.prettyprint').each(function(el) {
-            el.addClass('linenums');
+            $(el).addClass('linenums');
         });
     }
     $(function() {

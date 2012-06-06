@@ -189,7 +189,7 @@ Ext.apply(Class, {
 之前一直觉得很奇怪，如果预处理函数返回false，就影响到了整个预处理的流程，这样做似乎不大好吧。
 直到看了<code>singleton</code>的实现才似乎有些明白了，我认为其实就是为了满足类似这样的功能才增加了这么一层判断。<code>singleton</code>顾名思义，就是单例。所以第四个参数传递的是流程函数，用于在singleton内部直接调用，这样就可以解决把类对象更换为实例进行返回的场景了：
 
-<pre>
+<pre class="prettyprint">
  Manager.registerPostprocessor('singleton', function(name, cls, data, fn) {
     fn.call(this, name, new cls(), data);
     return false;
