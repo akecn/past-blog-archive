@@ -263,8 +263,20 @@
     
     Class.registerProcessor('extend', function(cls, data) {
     	var extend = data.extend,
-    		base = Base;
-    		console.log(extend)
+    		base = Base, 
+            parent;
+
+        if(typeof extend === "string") {
+            parent = App.existNamespace(extend);
+        }else {
+            parent = extend;
+        }
+        delete data.extend;
+
+        if(!parent) {
+            parent = base;
+        }
+        App.extend(cls, parent);
     		console.log('this is a extend processor');
     }, true);
     
