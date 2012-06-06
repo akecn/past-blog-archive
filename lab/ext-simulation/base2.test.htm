@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+    	<meta charset="utf-8" />
         <title>own component base test</title>
         <script type="text/javascript" src="base-0.2.source.js"></script>
     </head>
@@ -38,13 +39,22 @@
                 console.log('silent');
             }
         });
-        //ake.test.mao = 1111;
-        //var o = new ake.tt();
-        //o.init();
-        //o.shout();
-        //console.log(o.mao);
-        //var t = new ake.test();
-        //t.shout();
+        
+        Ext.define('ake.aa', {
+        	extend: "ake.test",
+        	constructor: function() {
+				console.log('something about this:', this, 'and shout:', this.shout);
+        	}
+        });
+        ake.test.mao = 1111;
+        var o = new ake.tt();
+        o.init();
+        o.shout();
+        console.log(o.mao);
+        var t = new ake.test();
+        t.shout();
+        var a = new ake.aa();
+        a.shout();
         </script>
     </body>
 </html>

@@ -201,13 +201,26 @@
         }
     });
     
+    var baseStaticProperties = [];
+    for(var baseStaticProperty in Base) {
+    	if(Base.hasOwnProperty(baseStaticProperty)) {
+    		baseStaticProperties.push(baseStaticProperty);
+    	}
+    }
     var Class = App.Class = function(data, fnOnCreated) {
     	var stack = data.defaultPreprocessors || Class.defaultProcessors,
     		registeredProcessors = Class.processorStack,
     		processors = [], processor, idx= 0,
     		newClass = function() {
-    			return this.constructor.apply(this, arguments);
+    			var constructor = data.constructor;
+    			constructor && constructor.apply(this, arguments);
     		};
+
+		for (var i = 0, ln = baseStaticProperties.length; i < ln; i++) {
+            var staticPropertyName = baseStaticProperties[i];
+            newClass[staticPropertyName] = Base[staticPropertyName];
+        }    		
+
     	delete data.defaultPreprocessors;
 
     	for(var i = 0, len = stack.length; i < len; i++) {
@@ -231,6 +244,7 @@
     		if(!processor) {
    				// TODO 与base关联起来。
     			App.mix(cls.prototype, clsData);
+    			App.mix(cls.prototype, {$class: cls});
     			if(fnOnCreated) {
     				fnOnCreated.apply(cls, cls);
     			}
@@ -263,24 +277,49 @@
     
     Class.registerProcessor('extend', function(cls, data) {
     	var extend = data.extend,
-    		base = Base, 
-            parent;
+    		base = Base, basePrototype = base.prototype,
+    		prototype = function() {},
+            parent, parentPrototype;
 
         if(typeof extend === "string") {
             parent = App.existNamespace(extend);
         }else {
             parent = extend;
         }
-        delete data.extend;
 
         if(!parent) {
             parent = base;
         }
+        
+        parentPrototype = parent.prototype;
+        prototype.prototype = parentPrototype;
+        
+        var clsPrototype = cls.prototype = new prototype();
+        
+        if(!('$class' in parent)) {
+        	for(var it in basePrototype) {
+        		if(!parentPrototype[it]) {
+        			parentPrototype[it] = basePrototype[it];
+        		}
+        	}
+        }
+        cls.superclass = clsPrototype.superclass = parentPrototype;
+        clsPrototype.self = cls;
+        
+        delete data.extend;
+                
         App.extend(cls, parent);
-    		console.log('this is a extend processor');
+
+        // add prototype methods/props
+        for(var key in data) {
+            if(data.hasOwnProperty(key)) {
+                var prop = data[key];
+                cls.own(key, prop);
+            }
+        }
     }, true);
     
-    Class.setDefaultProcessors(['extend']);
+    Class.setDefaultProcessors(['constructor', 'extend']);
     
     var Manager =  App.ClassManager = {
     	create: function(className, data, fnOnCreated) {
@@ -315,6 +354,7 @@
 		    		processor = processors[idx++];
 		    		
 		    		if(!processor) {
+		    			manager.set(clsName, cls);
 		    			if(fnOnCreated) {
 		    				fnOnCreated.apply(cls, cls);
 		    			}
@@ -331,6 +371,9 @@
     
     App.mix(Manager, {
     	processorStack: {},
+    	map: {
+    		alternateToName: {}
+    	},
     	defaultProcessors: [],
     	registerProcessor: function(name, fn, always) {
     		this.processorStack[name] = {
@@ -339,8 +382,22 @@
 				always: always || false    		
     		}
     		return this;
+    	},
+    	classes: {},
+    	getName: function(cls) {
+    		return cls && cls.$className || "";
+    	},
+    	set: function(name, value) {
+    		var clsName = this.getName(value);
+    		
+    		this.classes[name] = App.setNamespace(name, value);
+
+    		if(clsName && clsName !== name) {
+    			this.maps.alternateToName(name) = clsName;
+    		}
     	}
     });
+    
     // TODO：注册实现下面那个define方法的所有processor相关处理函数。
     App.define = function(className, data, fnOnCreated) {
     	return Manager.create.apply(Manager, arguments);
