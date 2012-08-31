@@ -15,7 +15,7 @@ title: iframe在ie6下显示透明的bug
 
 这个时候就会发生这样的事情。
 
-[img]("../assets/images/alpha-iframe-in-ie6-img1.jpg")
+![img](http://akecn.github.com/assets/images/alpha-iframe-in-ie6-img1.jpg)
 
 真正的内容被透明化了。
 
