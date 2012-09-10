@@ -8,7 +8,7 @@ title: 支持滑动门效果的按钮在部分浏览器下的显示问题
 
 在创建具有[滑动门效果][3]的按钮DPL时，发现在IE下active的显示状态会将背景向右下偏移，导致背景上出现空隙。一开始以为是`:active`伪类默认存在一些`margin或者padding`的定义，但修改以后没有效果。如下：
 
-[img](http://ww4.sinaimg.cn/mw690/61302639gw1dwrohtjylej.jpg)
+![img](http://ww4.sinaimg.cn/mw690/61302639gw1dwrohtjylej.jpg)
 
 在IE下（任意版本）保持`mousedown`状态时就会看到下图的效果。
 后来就去找其他人实现的效果，直到看到这篇《[Styling the button element with sliding doors
@@ -18,7 +18,7 @@ title: 支持滑动门效果的按钮在部分浏览器下的显示问题
 
 另外在FF下遇到的背景偏移的问题，这篇文章的评论中也有提到，具体解决方案见[bugzilla][2]。
 
-[img](http://ww4.sinaimg.cn/mw690/61302639gw1dwrohum54pj.jpg)
+![img](http://ww4.sinaimg.cn/mw690/61302639gw1dwrohum54pj.jpg)
 
 [1]:http://filamentgroup.com/lab/styling_the_button_element_with_sliding_doors_archived/
 [2]:https://bugzilla.mozilla.org/show_bug.cgi?id=140562
