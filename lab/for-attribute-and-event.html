@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>label标签的for属性与相关事件的触发顺序</title>
+        <script type="text/javascript" src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+    </head>
+    <body>
+        <div tabIndex="0" style="font-weight: 700;margin-bottom: 50px;">
+            label标签在chrome浏览器下，即使增加了tabIndex=0也无法获取到焦点。其他标签没问题。
+            <br />
+            其他浏览器下没这个问题。
+            <br />
+            chrome version: 20.0.1132.57 m
+        </div>
+        <label style="display: block;margin-bottom: 20px;" tabIndex=0>label标签没有for属性的时候，也无法获取焦点</label>
+        <label id="ttd2" tabIndex="0" for="ttd1">for with tabindex:</label>
+        <br />
+        <label id="ttd3" for="ttd1">for without tabindex:</label>
+        <br />
+        <input type="text" id="ttd1" />
+
+        <ol class="conclusion">
+            <li>chrome20下，label标签无法获取焦点。所以触发的相关事件中不包含label的focus/blur等事件。</li>
+            <li>click事件是在mousedown和mouseup事件之后触发，一次mousedown+mouseup才触发一次click事件。</li>
+            <li>IE10/chrome: label标签的for属性直接触发了input标签的click和focus事件。先触发click，后触发focus事件。通过直接点击input标签，可以看到，focus事件是在mousedown事件之后被触发的。所以for属性触发的顺序和直接操作的事件（click和focus）顺序是不一致的。</li>
+            <li></li>
+        </ol>
+        <ul id="logboard">
+        </ul>
+        <script type="text/javascript">
+            var S = KISSY, D = S.DOM, E = S.Event;
+            var elems = D.query('#ttd2, #ttd1, #ttd3'),
+                evts = ['click', 'focus', 'mousedown', 'mouseup', 'blur'];
+            S.each(evts, function(evt) {
+                E.on(elems, evt, function(ev) {
+                    log(ev.type, ev.target.id);
+                });
+            });
+
+            var begain= S.now(),
+                duration = 150, idx = 0;
+            function log() {
+                var msg = S.makeArray(arguments),
+                    end = S.now();
+                if(end - begain > duration) {
+                    echo((idx++) + "======================");
+                    begain = end;
+                }
+                echo(msg.join('  '));
+            }
+            var structe = '<li>{data}</li>';
+            function echo(data) {
+                
+                var el = D.create(S.substitute(structe, {data: data}));
+                D.append(el, '#logboard');
+                window.console && console.log(data);
+            }
+        </script>
+    </body>
+</html>
