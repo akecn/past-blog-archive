@@ -20,7 +20,10 @@ title: 支持滑动门效果的按钮在部分浏览器下的显示问题
 
 ![img](http://ww4.sinaimg.cn/mw690/61302639gw1dwrohum54pj.jpg)
 
+update: 在IE下还可能还会遇到的问题，就是button里的padding异常，详情可见[button style in ie][5]。解决方案是给button设置样式`overflow:visible`。
+
 [1]:http://filamentgroup.com/lab/styling_the_button_element_with_sliding_doors_archived/
 [2]:https://bugzilla.mozilla.org/show_bug.cgi?id=140562
 [3]:http://www.w3cn.org/article/translate/2005/112.html
 [4]:http://filamentgroup.com/examples/buttonElement/
+[5]:http://stackoverflow.com/questions/1567419/button-styling-in-ie
