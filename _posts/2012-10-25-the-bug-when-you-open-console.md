@@ -62,5 +62,7 @@ title: 开发人员才可能遇到的bug
 
 ok，一次苦逼的排查到此为止，记录于此留作纪念。
 
+update：今天找同事的机子测试了下，坑爹的发现居然没重现。这事儿没话说了。。让我疯了吧。。。。——2012-10-30
+
 [1]:http://stackoverflow.com/questions/12392049/how-to-set-elements-hover-state-in-chrome-dev-tools-and-edit-childs-style
 [2]:http://fiddle.jshell.net/NJnYS/2/
