@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+        <script src="http://malsup.github.com/jquery.form.js"></script>
+        <script type="text/javascript">
+$(function() {
+    //$.jsonp('', function() {
+        $('#jquery').ajaxForm({
+            iframe: true,
+            success:function(data) {
+                alert(data);
+            },
+            error: function() {
+                alert('error');
+            }
+        })
+    //}
+})
+        </script>
+        <script type="text/javascript" src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy.js"></script>
+        <script type="text/javascript">
+            KISSY.ready(function(S) {
+                var form = S.one('#kissy'),
+                    btn = S.all('#elsubmit');
+                btn.on('click', function(ev) {
+                    ev.preventDefault();
+                    S.io({
+                        url: form.attr('action'),
+                        type: "POST",
+                        form: form,
+                        success:function(data) {
+                            alert(data);
+                        },
+                        error: function() {
+                            alert('error');
+                        }
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <form name="jquery" action="http://127.0.0.1/frame.php" id="jquery">
+            <input type="text" name="a1" />
+                <input type="text" name="a2" />
+                <input type="text" name="a3" />
+                <input type="text" name="a4" />
+                <input type="text" name="a5" />
+                <input type="text" name="a6" />
+                <input type="file" name="a6" />
+            <button type="submit">submit</button>
+        </form>
+
+        <form name="kissy" action="http://127.0.0.1/frame.php" id="kissy" encType="multipart/form-data">
+                <input type="text" name="a1" />
+                <input type="text" name="a2" />
+                <input type="text" name="a3" />
+                <input type="text" name="a4" />
+                <input type="text" name="a5" />
+                <input type="text" name="a6" />
+                <input type="file" name="a6" />
+            <button type="button" id="elsubmit">submit</button>
+        </form>
+    </body>
+</html>
